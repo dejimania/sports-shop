@@ -14,7 +14,7 @@ const mapDispatchToProps = {
 };
 
 const filterProducts = (products = [], category) => {
-  (!category || category === "All") ? products :
+ return (!category || category === "All") ? products :
     products.filter(p => p.category.toLowerCase() === category.toLowerCase());
 };
 
@@ -25,7 +25,7 @@ export const ShopConnector = connect(mapStateToProps, mapDispatchToProps)(
         <Route
           path="/shop/products/:category?"
           render={ (routeProp) => {
-            <Shop { ...this.props} { ...routeProp }
+            return <Shop { ...this.props} { ...routeProp }
               products={ filterProducts(this.props.products, routeProp.match.params.category)}
             />
           }}
@@ -33,7 +33,7 @@ export const ShopConnector = connect(mapStateToProps, mapDispatchToProps)(
         <Redirect to="/shop/products" />
       </Switch>
     }
-    
+
     componentDidMount() {
       this.props.loadData(DataTypes.CATEGORIES);
       this.props.loadData(DataTypes.PRODUCTS);
