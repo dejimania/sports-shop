@@ -30,7 +30,7 @@ export class CartDetails extends Component {
         </table>
         <div className="text-center">
           <Link className="btn btn-primary m-1" to="/shop">
-            Contimue Shopping
+            Continue Shopping
           </Link>
           <Link className={ this.getLinkCLasses() } to="/shop/checkout">
             Checkout
